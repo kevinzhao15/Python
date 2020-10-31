@@ -1,0 +1,57 @@
+SELECT
+statements used to fetch data from database. Every query begins with SELECT
+
+FROM
+used to specify which database is selected. 
+
+(SELECT * FROM celebs;)
+this code returns information from the database to provide the table on celebs
+* is a wildcard character that allows you to select every column without having to name each one. SELECT name FROM celebs; vs SELECT * FROM celebs;
+
+CREATE TABLE
+a clause that creates a table. Clauses perform specific tasks in SQL - typically written in capital letters. 
+CREATE TABLE table_name (
+  column_1 data_type,                             |
+  column_2 data_type,                             |    These are parameters. A parameter is a list of columns, data types or values that are passed to a clause as an argument
+  column_3 data_type                              |    
+);
+
+CREATE TABLE celebs (
+  id INTEGER,
+  name TEXT
+  age INTEGER
+);
+
+INSERT
+inserts a new row into the table.
+INSERT INTO celebs  (id, name, age)
+VALUES (1, 'Justin Bieber', 22);
+
+ALTER TABLE
+a clause that allows you to make specified changes
+ALTER TABLE celebs
+ADD COLUMN twitter_handle TEXT;
+
+UPDATE 
+allows us to edit a row in the table
+UPDATE celebs
+SET twitter_handle = '@taylorswift'
+WHERE id = 4;                             | where ID is 4, the twitter handle will be set to @taylorswift
+
+DELETE 
+deletes one or more rows from the table
+DELETE FROM celebs
+WHERE twitter_handle IS NULL              | deletes all rows where twitter_handle = ∅
+
+
+CONSTRAINTS
+  PRIMARY KEY
+    columns can be used to uniquely identify the row. Attempts to insert a row with an identical value to a row already in the table will result in a constraint violation
+  UNIQUE
+    columns have a different value for every row
+  NOT NULL
+    columns must have a value
+  DEFAULT   
+    columns take an additional argument that will be the assumed value for an inserted row if the new row does not specify a value for that column
+
+
