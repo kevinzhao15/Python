@@ -54,4 +54,45 @@ CONSTRAINTS
   DEFAULT   
     columns take an additional argument that will be the assumed value for an inserted row if the new row does not specify a value for that column
 
+AS
+keyword in SQL that allows you to rename a column or table using an alias. Can be anything as long as its in quotes
+SELECT column name AS '_____';
 
+DISTINCT
+used to return unique values in the output. Filters out all duplicate values in the specified column(s)
+SELECT DISTINCT column name FROM table;
+
+WHERE
+used to restrict query results to obtain only the information we want
+SELECT * FROM movies WHERE imdb_rating > 8;
+
+LIKE
+used with the WHERE clause to search for a specific pattern in a column. A% matches all movies with names that begin with letter 'A' %a matches all movies that end with 'a' %a% matches all movies that start or end with 'a'
+SELECT * FROM movies WHERE name LIKE 'Se_en';         | selects all movies that start with "se" and end with "en" and having exactly one character in the middle
+
+BETWEEN
+Used in a WHERE clause to filter the result set within a certain range
+SELECT * FROM movies WHERE year BETWEEN 1990 and 1999;
+SELECT * FROM movies WHERE name BETWEEN 'A' and 'J';      | If the movie has the name of simply 'J' it would be included by not 'Jaws' because it only goes up to J
+
+OR
+can also be used to combine multiple conditions in WHERE. Displays a row if any condition is true. AND only displays a row if all the conditions are true
+SELECT * FROM movies WHERE year > 2014 OR genre = 'action';
+
+ORDER BY
+sorts the result either alphabetically or numerically
+SELECT * FROM movies ORDER BY name;     SELECT * FROM movies ORDER BY year DESC(ASC);
+
+LIMIT
+a clause that lets you specify the maximum number of rows the result set will have
+SELECT * FROM movies LIMIT 10;
+
+CASE
+allows us to create different outputs
+SELECT name,
+CASE 
+  WHEN imdb_rating > 8 THEN 'Fantastic'
+  WHEN imdb_rating > 6 THEN 'Poorly Received'
+  ELSE 'Avoid at All Costs'
+ END AS 'Review'        | Creates a new column called Review
+FROM movies;
