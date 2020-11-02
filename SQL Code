@@ -96,3 +96,30 @@ CASE
   ELSE 'Avoid at All Costs'
  END AS 'Review'        | Creates a new column called Review
 FROM movies;
+
+
+Aggregates are calculations performed on multiple rows of a table.
+
+COUNT(): count the number of rows
+  SELECT COUNT(*) FROM table_name;          | this will count the number of rows in a table
+  
+SUM(): the sum of the values in a column
+  SELECT SUM(column_name) FROM table_name;  | this will add all the values in a particular column
+
+MAX()/MIN(): the largest/smallest value
+  SELECT MAX(column_name) FROM table_name;  | selects the largest (smallest if using MIN) value in the column
+
+AVG(): the average of the values in a column
+  SELECT AVG(column_name) FROM table_name;  | calculates the average value of a particular column
+
+ROUND(): round the values in the column
+  SELECT ROUND(column_name, integer) FROM table_name; | rounds the value in the column to the number of decimal places specified by the integer
+  SELECT ROUND(AVG(price),2) FROM fake_apps;          | averages and rounds the value
+  
+GROUP BY
+a clause used to arrange identical data into groups. Comes after any WHERE statements but before ORDER BY or LIMIT
+SELECT year, AVG(imdb_rating) FROM movies GROUP BY year ORDER BY year
+
+HAVING
+Filters which groups to include and which to exclude. Comes after GROUP BY but before ORDER BY and LIMIT. Use HAVING when there is an aggregate function in it
+  SELECT year, genre, COUNT(name) FROM movies GROUP BY 1, 2 HAVING COUNT(name) > 10;
