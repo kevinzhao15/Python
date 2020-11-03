@@ -123,3 +123,8 @@ SELECT year, AVG(imdb_rating) FROM movies GROUP BY year ORDER BY year
 HAVING
 Filters which groups to include and which to exclude. Comes after GROUP BY but before ORDER BY and LIMIT. Use HAVING when there is an aggregate function in it
   SELECT year, genre, COUNT(name) FROM movies GROUP BY 1, 2 HAVING COUNT(name) > 10;
+
+Combining Tables
+JOIN
+combines multiple tables together
+SELECT * FROM orders JOIN customers ON orders.customer_id = customers.customer_id;  
